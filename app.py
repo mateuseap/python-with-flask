@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from datetime import datetime
@@ -22,6 +22,7 @@ class User(db.Model):
     def __repr__(self):
         return f'<User>: {self.email}>'
 
-@app.get('/')
-def home():
-    return "Hello, world!"
+@app.route('/')
+def index():
+    users = User.query.all()
+    return render_template('index.html', users=users)
