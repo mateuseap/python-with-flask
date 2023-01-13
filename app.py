@@ -26,3 +26,8 @@ class User(db.Model):
 def index():
     users = User.query.all()
     return render_template('index.html', users=users)
+
+@app.route('/<int:user_id>/')
+def user(user_id):
+    user = User.query.get_or_404(user_id)
+    return render_template('user.html', user=user)
