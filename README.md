@@ -13,7 +13,7 @@ git clone https://github.com/mateuseap/python-with-flask
 ## Entering the directory
 cd python-with-flask
 ```
-## 🚀 Project Setup
+## 🚀 Project setup
 
 ### > Setting the environment variables
 
@@ -38,6 +38,8 @@ pip install -r .\requirements.txt
 ## Running the app
 python -m flask run
 ```
+
+Open [http://127.0.0.1:5000](http://127.0.0.1:5000) to view it in the browser.
 
 ### > Creating the database
 
