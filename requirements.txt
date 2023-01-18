@@ -3,3 +3,4 @@ python-dotenv
 psycopg2
 flask_sqlalchemy
 flask_cors
+flask_restful
