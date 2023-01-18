@@ -7,10 +7,13 @@ from dotenv import load_dotenv
 from datetime import datetime
 from resources.index_route import IndexRoute
 from resources.user_route import UserRoute
+from resources.middleware import Auth
 
 load_dotenv()
 
 app = Flask(__name__)
+
+app.wsgi_app = Auth(app.wsgi_app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
