@@ -5,7 +5,8 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from datetime import datetime
-from resources.index import Index
+from resources.index_route import IndexRoute
+from resources.user_route import UserRoute
 
 load_dotenv()
 
@@ -29,9 +30,5 @@ class User(db.Model):
     def __repr__(self):
         return f'<User>: {self.email}>'
 
-api.add_resource( Index, "/", methods=["GET"] )
-
-@app.route('/<int:user_id>/')
-def user(user_id):
-    user = User.query.get_or_404(user_id)
-    return render_template('user.html', user=user)
+api.add_resource( IndexRoute, "/", methods=["GET"] )
+api.add_resource( UserRoute, '/<int:user_id>/', methods=["GET"] )
