@@ -1,10 +1,10 @@
-import traceback
+import os
 from werkzeug.wrappers import Request, Response
 
 class Auth(object):
     def __init__(self, app):
         self.app = app
-        self.api_key = 'e6db8bdb-0291-4458-965e-7e6a9c5ab1b6'
+        self.api_key = os.getenv("API_KEY")
 
     def __call__(self, environ, start_response):
         try:
