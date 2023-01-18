@@ -1,20 +1,24 @@
 import os
-from flask import Flask, render_template
+from flask import Flask
 from flask_cors import CORS
+from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from datetime import datetime
+from resources.index import Index
 
 load_dotenv()
 
 app = Flask(__name__)
 
-CORS(app)
-
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
+CORS(app)
+
+api = Api(app, "/api")
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -25,10 +29,7 @@ class User(db.Model):
     def __repr__(self):
         return f'<User>: {self.email}>'
 
-@app.route('/')
-def index():
-    users = User.query.all()
-    return render_template('index.html', users=users)
+api.add_resource( Index, "/", methods=["GET"] )
 
 @app.route('/<int:user_id>/')
 def user(user_id):
