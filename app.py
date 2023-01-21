@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 from resources.index_route import IndexRoute
 from resources.user_route import UserRoute
-from resources.middleware import Auth
+from resources.middlewares.auth import Auth
 
 load_dotenv()
 
