@@ -24,6 +24,8 @@ Create a file named ``.env`` and copy and past in it what is inside the ``.env.e
 postgresql://username:password@host:port/database_name
 ```
 
+You can also change the ``API_KEY`` variable value, but if you leave the default value, the project will still work properly.
+
 ### > Running the app
 
 You'll need to run the commands below:
